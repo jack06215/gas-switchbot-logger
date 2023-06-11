@@ -26,7 +26,7 @@ const config: Configuration = {
   plugins: [
     new GasPlugin(),
     new CopyPlugin({
-      patterns: [{ from: "./src/appsscript.json" }],
+      patterns: [{ from: "./src/appsscript.json" }, { from: "./secret/.clasp.json" }],
     }),
   ],
 };
