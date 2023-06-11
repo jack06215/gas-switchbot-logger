@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class SpreadsheetLogger {
   private spreadsheet: GoogleAppsScript.Spreadsheet.Spreadsheet;
-  private eventLogSheet = "Sheet1";
-  private doorLockSheetJa = "Door Lock";
-  private hubSheetJa = "Hub";
+  private eventLogSheet = 'Sheet1';
+  private doorLockSheetJa = 'Door Lock';
+  private hubSheetJa = 'Hub';
 
   constructor(spreadsheetId: string) {
     this.spreadsheet = SpreadsheetApp.openById(spreadsheetId);
@@ -20,10 +20,10 @@ export class SpreadsheetLogger {
     const sheet = this.spreadsheet.getSheetByName(this.eventLogSheet)!;
 
     // Push top
-    sheet.getRange("2:2").insertCells(SpreadsheetApp.Dimension.ROWS);
+    sheet.getRange('2:2').insertCells(SpreadsheetApp.Dimension.ROWS);
 
     // Insert data at top
-    sheet.getRange(2, 1).setValue(new Date().toLocaleString("ja-JP"));
+    sheet.getRange(2, 1).setValue(new Date().toLocaleString('ja-JP'));
     sheet.getRange(2, 2).setValue(JSON.stringify(jsonData));
     sheet.getRange(2, 3).setValue(jsonData.context.deviceMac);
     sheet.getRange(2, 4).setValue(jsonData.context.timeOfSample);

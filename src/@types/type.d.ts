@@ -1,1 +1,1 @@
-declare module "gas-webpack-plugin";
+declare module 'gas-webpack-plugin';

@@ -1,11 +1,11 @@
 /* eslint-disable */
-import { env } from "./config";
-import { SpreadsheetLogger } from "./logging";
-import { LineMessenging } from "./messaging";
+import { env } from './config';
+import { SpreadsheetLogger } from './logging';
+import { LineMessenging } from './messaging';
 
 const DEVICE_WATCHLIST = [
-  "CA198CE18F1D", // Door Lock
-  "F1A0181CCC28", // Hub 2
+  'CA198CE18F1D', // Door Lock
+  'F1A0181CCC28', // Hub 2
 ];
 
 function doPost(e: GoogleAppsScript.Events.DoPost) {
@@ -34,7 +34,7 @@ function doPost(e: GoogleAppsScript.Events.DoPost) {
 
   // Return OK response
   const output = ContentService.createTextOutput(
-    JSON.stringify({ result: "OK" })
+    JSON.stringify({ result: 'OK' })
   );
   output.setMimeType(ContentService.MimeType.JSON);
   return output;

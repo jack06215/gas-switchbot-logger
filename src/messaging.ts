@@ -1,12 +1,12 @@
 export class LineMessenging {
   private headers: GoogleAppsScript.URL_Fetch.HttpHeaders;
-  private pushEndpoint = "https://api.line.me/v2/bot/message/push";
-  private replyEndpoint = "https://api.line.me/v2/bot/message/reply";
+  private pushEndpoint = 'https://api.line.me/v2/bot/message/push';
+  private replyEndpoint = 'https://api.line.me/v2/bot/message/reply';
 
   constructor(apiToken: string) {
     this.headers = {
-      "Content-Type": "application/json; charset=UTF-8",
-      Authorization: "Bearer " + apiToken,
+      'Content-Type': 'application/json; charset=UTF-8',
+      Authorization: 'Bearer ' + apiToken,
     };
   }
 
@@ -16,7 +16,7 @@ export class LineMessenging {
       to: userId,
       messages: [
         {
-          type: "text",
+          type: 'text',
           text: message,
         },
       ],
@@ -33,13 +33,13 @@ export class LineMessenging {
       replyToken: token,
       messages: [
         {
-          type: "text",
+          type: 'text',
           text: text,
         },
       ],
     };
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
-      method: "post",
+      method: 'post',
       headers: this.headers,
       payload: JSON.stringify(message),
     };
@@ -50,7 +50,7 @@ export class LineMessenging {
 export class JoinApp {
   private joinappApiKey: string;
   private baseUrl =
-    "https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush";
+    'https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush';
 
   constructor(apiKey: string) {
     this.joinappApiKey = apiKey;
@@ -59,7 +59,7 @@ export class JoinApp {
   sendPush(deviceId: string, title: string, text: string) {
     const url = `${this.baseUrl}?apikey=${this.joinappApiKey}&deviceId=${deviceId}&title=${title}&text=${text}`;
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
-      method: "get",
+      method: 'get',
     };
     return UrlFetchApp.fetch(url, options);
   }
