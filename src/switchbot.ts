@@ -1,7 +1,7 @@
 import { HmacSHA256, enc } from 'crypto-js';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-class SwitchBot {
+export class SwitchBot {
   private token: string;
   private secret: string;
   private baseUrl = 'https://api.switch-bot.com/v1.1';
@@ -11,7 +11,7 @@ class SwitchBot {
     this.secret = secret;
   }
 
-  createSignature() {
+  newHeader() {
     const ts = Date.now().toString();
     const nonce = Utilities.getUuid();
 
@@ -38,7 +38,7 @@ class SwitchBot {
     const url = `${this.baseUrl}/devices/${deviceId}/status`;
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
       method: 'get',
-      headers: this.createSignature(),
+      headers: this.newHeader(),
     };
     return UrlFetchApp.fetch(url, options).getContentText();
   }
