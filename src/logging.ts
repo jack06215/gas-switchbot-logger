@@ -9,13 +9,7 @@ export class SpreadsheetLogger {
     this.spreadsheet = SpreadsheetApp.openById(spreadsheetId);
   }
 
-  /**
-   * Append new row to the top of the spreadsheet
-   * @param e event
-   * @param jsonData JSON data
-   * @returns
-   */
-  appendEventLog(jsonData: any) {
+  public appendEventLog(jsonData: any) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const sheet = this.spreadsheet.getSheetByName(this.eventLogSheet)!;
 
@@ -33,7 +27,7 @@ export class SpreadsheetLogger {
     return;
   }
 
-  updateLockerState(jsonData: any) {
+  public updateLockerState(jsonData: any) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const sheet = this.spreadsheet.getSheetByName(this.doorLockSheetJa)!;
 
@@ -43,7 +37,7 @@ export class SpreadsheetLogger {
     return;
   }
 
-  updateHubState(jsonData: any) {
+  public updateHubState(jsonData: any) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const sheet = this.spreadsheet.getSheetByName(this.hubSheetJa)!;
 

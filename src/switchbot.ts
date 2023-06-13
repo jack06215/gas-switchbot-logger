@@ -11,7 +11,7 @@ export class SwitchBot {
     this.secret = secret;
   }
 
-  newHeader() {
+  private newHeader() {
     const ts = Date.now().toString();
     const nonce = Utilities.getUuid();
 
@@ -27,14 +27,14 @@ export class SwitchBot {
     return headers;
   }
 
-  newHashedSign(message: string) {
+  private newHashedSign(message: string) {
     const hashedMessage = HmacSHA256(message, this.secret);
     const signature = enc.Base64.stringify(hashedMessage);
 
     return signature;
   }
 
-  getDeviceStatus(deviceId: string) {
+  public getDeviceStatus(deviceId: string) {
     const url = `${this.baseUrl}/devices/${deviceId}/status`;
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
       method: 'get',

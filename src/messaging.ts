@@ -10,7 +10,7 @@ export class LineMessenging {
     };
   }
 
-  pushMessage(userId: string, message: string) {
+  public pushMessage(userId: string, message: string) {
     const messages = {
       headers: this.headers,
       to: userId,
@@ -28,7 +28,7 @@ export class LineMessenging {
     });
   }
 
-  replyMessage(text: string, token: string) {
+  public replyMessage(text: string, token: string) {
     const message = {
       replyToken: token,
       messages: [
@@ -49,14 +49,13 @@ export class LineMessenging {
 
 export class JoinApp {
   private joinappApiKey: string;
-  private baseUrl =
-    'https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush';
+  private baseUrl = 'https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush';
 
   constructor(apiKey: string) {
     this.joinappApiKey = apiKey;
   }
 
-  sendPush(deviceId: string, title: string, text: string) {
+  public sendPush(deviceId: string, title: string, text: string) {
     const url = `${this.baseUrl}?apikey=${this.joinappApiKey}&deviceId=${deviceId}&title=${title}&text=${text}`;
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
       method: 'get',
