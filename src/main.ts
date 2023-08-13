@@ -1,8 +1,7 @@
-/* eslint-disable */
 import { env } from './config';
 import { SpreadsheetLogger } from './logging';
 import { LineMessenging } from './messaging';
-import { SwitchBot } from './switchbot';
+// import { SwitchBot } from './switchbot';
 
 const SWITCHBOT_DEVICE = {
   doorLock: 'CA198CE18F1D',
@@ -11,9 +10,9 @@ const SWITCHBOT_DEVICE = {
 
 function doPost(e: GoogleAppsScript.Events.DoPost) {
   const json = JSON.parse(e.postData.contents);
-  const switchbot = new SwitchBot(env.switchbotToken, env.switchbotSecret);
   const messenger = new LineMessenging(env.lineApiToken);
   const logger = new SpreadsheetLogger(env.logSpreadsheetId);
+  // const switchbot = new SwitchBot(env.switchbotToken, env.switchbotSecret);
 
   if (Object.values(SWITCHBOT_DEVICE).includes(json.context.deviceMac)) {
     logger.appendEventLog(json);
@@ -31,9 +30,10 @@ function doPost(e: GoogleAppsScript.Events.DoPost) {
   }
 
   // Return OK response
-  const output = ContentService.createTextOutput(switchbot.getDeviceStatus(SWITCHBOT_DEVICE.hub));
+  const output = ContentService.createTextOutput(JSON.stringify({ result: 'ok' }));
   output.setMimeType(ContentService.MimeType.JSON);
   return output;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (global as any).doPost = doPost;
